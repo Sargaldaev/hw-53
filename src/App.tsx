@@ -10,22 +10,30 @@ const App = () => {
   const [tasks, setTasks] = useState<string[]>(startTasks);
 
 
-  const changeTask = () => {
+  const addTask = () => {
 
     const input: HTMLInputElement = document.querySelector('input')!;
     const taskCopy: string[] = [...tasks];
     taskCopy.unshift(input.value);
 
+    input.value = ''
     setTasks(taskCopy);
   };
+
+  const deleteTask = (index:number) => {
+    const taskCopy: string[] = [...tasks];
+    taskCopy.splice(index,1);
+
+    setTasks(taskCopy)
+  }
 
   return (
     <div className="App">
 
-      <AddTaskForm  onClickHandler={changeTask}/>
+      <AddTaskForm  onClickHandler={addTask}/>
 
       {tasks.map((task: string, index: number) => {
-        return <Task task={task}/>;
+        return <Task task={task} onClickHandler={() => deleteTask(index)}/>;
       })
 
       }

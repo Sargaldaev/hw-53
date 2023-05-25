@@ -2,7 +2,7 @@ import React from 'react';
 
 interface ITask {
   task: string;
-  onClickHandler?: React.MouseEventHandler;
+  onClickHandler: React.MouseEventHandler;
 }
 
 const Task: React.FC<ITask> = props => {

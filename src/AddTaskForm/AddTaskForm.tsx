@@ -1,6 +1,6 @@
 import React from 'react';
 interface IChange {
-  onClickHandler?: React.MouseEventHandler;
+  onClickHandler: React.MouseEventHandler;
 }
 
 const AddTaskForm:React.FC<IChange> = props => {
