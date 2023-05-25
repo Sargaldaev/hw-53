@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import AddTaskForm from './AddTaskForm/AddTaskForm';
+import Task from './Task/Task';
 
-function App() {
+const App = () => {
+
+  const startTasks: string[] = ['Buy Milk', 'Play Game', 'Read book'];
+
+  const [tasks, setTasks] = useState<string[]>(startTasks);
+
+
+  const changeTask = () => {
+
+    const input: HTMLInputElement = document.querySelector('input')!;
+    const taskCopy: string[] = [...tasks];
+    taskCopy.unshift(input.value);
+
+    setTasks(taskCopy);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <AddTaskForm  onClickHandler={changeTask}/>
+
+      {tasks.map((task: string, index: number) => {
+        return <Task task={task}/>;
+      })
+
+      }
     </div>
   );
-}
-
+};
 export default App;
