@@ -32,8 +32,8 @@ const App = () => {
 
       <AddTaskForm onClickHandler={addTask}/>
 
-      {tasks.map((task: string, index: number) => {
-        return <Task task={task} onClickHandler={() => deleteTask(index)}/>;
+      {tasks.map((task: string, index: number ) => {
+        return <Task key={index} task={task} onClickHandler={() => deleteTask(index) }/>;
       })
 
       }
