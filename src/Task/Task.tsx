@@ -7,9 +7,9 @@ interface ITask {
 
 const Task: React.FC<ITask> = props => {
   return (
-    <div>
+    <div className="task">
       <p>{props.task}</p>
-      <button onClick={props.onClickHandler}>delete</button>
+      <button onClick={props.onClickHandler} className="btn-task">remove</button>
     </div>
   );
 };

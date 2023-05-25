@@ -16,21 +16,21 @@ const App = () => {
     const taskCopy: string[] = [...tasks];
     taskCopy.unshift(input.value);
 
-    input.value = ''
+    input.value = '';
     setTasks(taskCopy);
   };
 
-  const deleteTask = (index:number) => {
+  const deleteTask = (index: number) => {
     const taskCopy: string[] = [...tasks];
-    taskCopy.splice(index,1);
+    taskCopy.splice(index, 1);
 
-    setTasks(taskCopy)
-  }
+    setTasks(taskCopy);
+  };
 
   return (
     <div className="App">
 
-      <AddTaskForm  onClickHandler={addTask}/>
+      <AddTaskForm onClickHandler={addTask}/>
 
       {tasks.map((task: string, index: number) => {
         return <Task task={task} onClickHandler={() => deleteTask(index)}/>;
